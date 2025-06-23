@@ -1,0 +1,43 @@
+[project]
+name = "purr"
+version = "0.0.0"
+description = "A cute, Pythonic, and extensible DSL for defining MLIR-like IR."
+authors = [{ name = "Igor Fedenko", email = "kehrazy@gmail.com" }]
+readme = "README.md"
+requires-python = ">=3.10"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Operating System :: OS Independent",
+    "Topic :: Software Development :: Compilers",
+]
+dependencies = ["rich>=14.0.0", "typer>=0.16.0"]
+
+[project.urls]
+"Homepage" = "https://github.com/kehrazy/purr"
+
+[project.scripts]
+purr = "purr.cli:app"
+
+[project.optional-dependencies]
+dev = ["pytest", "mypy", "ruff"]
+
+[tool.ruff]
+line-length = 88
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "UP", "B", "C4"]
+
+[tool.mypy]
+python_version = "3.10"
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = true
+disallow_any_unimported = true
+no_implicit_optional = true
+check_untyped_defs = true
+strict = true
+files = ["src/"]
+
+[tool.uv]
+package = true
